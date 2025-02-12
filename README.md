@@ -22,6 +22,13 @@ emscripten_sync::mutex mutex;
 std::scoped_lock lock{mutex};
 ```
 
+# Contributions welcome
+At the time of writing, only `mutex` is implemented.  Other synchronisation primitives could also be implemented using Emscripten's WASM worker API:
+
+- TODO: implement `std::counting_semaphore` equivalent, using `emscripten_semaphore_release` and `emscripten_semaphore_waitinf_acquire` / `emscripten_semaphore_try_acquire`.
+  - TODO: implement `std::binary_semaphore` equivalent using the above.
+- TODO: implement `std::condition_variable` equivalent, using `emscripten_condvar_wait`, `emscripten_condvar_waitinf` and `emscripten_condvar_signal`. 
+
 ## Other useful libraries
 
 You may also find the following Emscripten helper libraries useful:
